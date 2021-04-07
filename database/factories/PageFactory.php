@@ -26,7 +26,7 @@ class PageFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'body' => $this->faker->sentence,
-            'published' => assertTrue,
+            'published' => "1",
             'user_id' => User::factory(),
         ];
     }
