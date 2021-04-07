@@ -13,6 +13,8 @@ class Page extends Model
     protected $fillable = [
         'title', 'body', 'published', 'user_id'
     ];
+
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
