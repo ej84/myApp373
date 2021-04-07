@@ -11,7 +11,7 @@ class Page extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title', 'body', 'published_on', 'user_id'
+        'title', 'body', 'published', 'user_id'
     ];
     public function user(): BelongsTo
     {

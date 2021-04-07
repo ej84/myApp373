@@ -25,7 +25,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'body' => $this->faker->sentence,
-            'posted_on' => 'datetime',
+            'published' => 'datetime',
             'user_id' => User::factory(),
         ];
     }
