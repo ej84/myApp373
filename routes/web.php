@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostsController;
+use App\Http\Livewire\Posts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Posts as LiveWirePosts;
-use App\Http\Livewire\Contacts;
+//use App\Http\Livewire\Contacts;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +24,16 @@ Route::get('/', function () {
 })->name('home');
 //Route::get('/contacts', [Contacts::class, 'index']);
 
-Route::get('/posts/',[\App\Http\Controllers\PostsController::class, 'index'])->name('public_posts_index');
-Route::get('/posts/{id}',[\App\Http\Controllers\PostsController::class, 'show'])->name('public_posts_show');
+Route::get('/posts/',[PostsController::class, 'index'])->name('public_posts_index');
+Route::get('/posts/{id}',[PostsController::class, 'show'])->name('public_posts_show');
 
-Route::get('/pages/',[\App\Http\Controllers\PagesController::class, 'index'])->name('public_pages_index');
-Route::get('/pages/{id}',[\App\Http\Controllers\PagesController::class, 'show'])->name('public_pages_show');
+Route::get('/pages/',[PagesController::class, 'index'])->name('public_pages_index');
+Route::get('/pages/{id}',[PagesController::class, 'show'])->name('public_pages_show');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('post', Posts::class)->name('post');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('posts_admin', LiveWirePosts::class)->name('posts');
+
